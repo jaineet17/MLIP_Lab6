@@ -18,6 +18,9 @@ pipeline {
                 # Activate venv
                 source venv/bin/activate
 
+                # Install dependencies
+                pip install pytest pandas numpy
+
                 # Run pytest
                 pytest
 
@@ -29,7 +32,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'In this step, we deploy our porject'
+                echo 'In this step, we deploy our project'
                 echo 'Depending on the context, we may publish the project artifact or upload pickle files'
             }
         }
