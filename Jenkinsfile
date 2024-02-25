@@ -15,23 +15,15 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
 
-                # Activate conda
-                source /home/team03/miniconda3/etc/profile.d/conda.sh
+                # TODO fill out the path to conda here
+                #source /home/svaddi/miniconda3/envs/mlip
+                /home/svaddi/miniconda3/bin/conda init
 
-                if ! /home/team03/miniconda3/bin/conda env list | grep -q 'myenv'; then
-                    echo "Creating Conda environment"
-                    /home/team03/miniconda3/bin/conda create -n lab6env python=3.8 pytest numpy pandas scikit-learn -c conda-forge -y
-                else
-                    echo "Conda environment 'myenv' already exists, skipping creation."
-                fi
+                # TODO Complete the command to run pytest
+                /home/svaddi/miniconda3/bin/conda run -n mlip pytest
 
-                source /home/team03/miniconda3/bin/activate myenv
-
-                # Run pytest
-                pytest
-
-                # echo 'pytest not runned'
-                # exit 1 #comment this line after implementing Jenkinsfile
+                #echo 'pytest not runned'
+                #exit 1 #comment this line after implementing Jenkinsfile
                 '''
 
             }
